@@ -1,6 +1,7 @@
 package com.mhosler.d20_campaign_manager.service;
 
 import com.mhosler.d20_campaign_manager.dto.CreateHouseRuleRequest;
+import com.mhosler.d20_campaign_manager.dto.UpdateHouseRuleRequest;
 import com.mhosler.d20_campaign_manager.entity.HouseRuleDefinition;
 import com.mhosler.d20_campaign_manager.entity.User;
 import com.mhosler.d20_campaign_manager.repository.HouseRuleDefinitionRepository;
@@ -36,6 +37,16 @@ public class HouseRuleService {
                 request.getRuleName(),
                 request.getDescription()
         );
+
+        return houseRuleDefinitionRepository.save(rule);
+    }
+
+    public HouseRuleDefinition updateHouseRule(Long id, UpdateHouseRuleRequest request){
+        HouseRuleDefinition rule = houseRuleDefinitionRepository
+                .findByIdAndOwnerId(id, request.getOwnerId())
+                .orElseThrow(() -> new RuntimeException("Rule not found for this user."));
+        rule.setRuleName(request.getRuleName());
+        rule.setDescription(request.getDescription());
 
         return houseRuleDefinitionRepository.save(rule);
     }

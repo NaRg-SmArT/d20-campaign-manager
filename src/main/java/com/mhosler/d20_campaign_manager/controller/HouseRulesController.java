@@ -1,6 +1,7 @@
 package com.mhosler.d20_campaign_manager.controller;
 
 import com.mhosler.d20_campaign_manager.dto.CreateHouseRuleRequest;
+import com.mhosler.d20_campaign_manager.dto.UpdateHouseRuleRequest;
 import com.mhosler.d20_campaign_manager.entity.HouseRuleDefinition;
 import com.mhosler.d20_campaign_manager.service.HouseRuleService;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,13 @@ public class HouseRulesController {
         return houseRuleService.createHouseRule(request);
     }
 
+    @PutMapping("/{id}")
+    public HouseRuleDefinition updateHouseRule(@PathVariable Long id, @RequestBody UpdateHouseRuleRequest request){
+        return houseRuleService.updateHouseRule(id, request);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteHouseRule(@PathVariable Long id, @RequestParam Long ownerId){
-        houseRuleService.deleteHouseRule(id,  ownerId);
+        houseRuleService.deleteHouseRule(id, ownerId);
     }
 }
