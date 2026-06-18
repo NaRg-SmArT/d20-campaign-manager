@@ -1,8 +1,18 @@
 package com.mhosler.d20_campaign_manager.dto;
 
+import jakarta.validation.constraints.*;
+
 public class UpdateHouseRuleRequest {
+
+    @NotNull
     private Long ownerId;
+
+    @NotBlank
+    @Size(max = 255)
     private String ruleName;
+
+    @NotBlank
+    @Size(max = 1000)
     private String description;
 
     public UpdateHouseRuleRequest(Long ownerId, String ruleName, String description) {

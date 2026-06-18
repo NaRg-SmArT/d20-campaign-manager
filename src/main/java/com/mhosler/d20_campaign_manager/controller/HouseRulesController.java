@@ -4,6 +4,7 @@ import com.mhosler.d20_campaign_manager.dto.CreateHouseRuleRequest;
 import com.mhosler.d20_campaign_manager.dto.UpdateHouseRuleRequest;
 import com.mhosler.d20_campaign_manager.entity.HouseRuleDefinition;
 import com.mhosler.d20_campaign_manager.service.HouseRuleService;
+import jakarta.validation.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +25,12 @@ public class HouseRulesController {
     }
 
     @PostMapping
-    public HouseRuleDefinition createHouseRule(@RequestBody CreateHouseRuleRequest request){
+    public HouseRuleDefinition createHouseRule(@Valid @RequestBody CreateHouseRuleRequest request){
         return houseRuleService.createHouseRule(request);
     }
 
     @PutMapping("/{id}")
-    public HouseRuleDefinition updateHouseRule(@PathVariable Long id, @RequestBody UpdateHouseRuleRequest request){
+    public HouseRuleDefinition updateHouseRule(@PathVariable Long id, @Valid @RequestBody UpdateHouseRuleRequest request){
         return houseRuleService.updateHouseRule(id, request);
     }
 
