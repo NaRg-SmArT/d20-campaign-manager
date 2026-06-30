@@ -1,24 +1,21 @@
-package com.mhosler.d20_campaign_manager.entity;
+package com.mhosler.d20_campaign_manager.dto;
 
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserResponse {
+
     private Long id;
-
     private String username;
     private String email;
 
-    public User() {
-    }
-    public User(String userName, String email) {
-        this.username = userName;
-        this.email = email;
+    public UserResponse() {
+
     }
 
+    public UserResponse(Long id, String username, String email) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
@@ -30,8 +27,8 @@ public class User {
     public String getUsername() {
         return username;
     }
-    public void setUsername(String userName) {
-        this.username = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

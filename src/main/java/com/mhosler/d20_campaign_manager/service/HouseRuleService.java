@@ -5,6 +5,8 @@ import com.mhosler.d20_campaign_manager.dto.HouseRuleDefinitionResponse;
 import com.mhosler.d20_campaign_manager.dto.UpdateHouseRuleRequest;
 import com.mhosler.d20_campaign_manager.entity.HouseRuleDefinition;
 import com.mhosler.d20_campaign_manager.entity.User;
+import com.mhosler.d20_campaign_manager.exceptions.*;
+
 import com.mhosler.d20_campaign_manager.repository.HouseRuleDefinitionRepository;
 import com.mhosler.d20_campaign_manager.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -25,7 +27,7 @@ public class HouseRuleService {
 
     public List<HouseRuleDefinitionResponse> getRulesByOwner(Long ownerId) {
         User owner = userRepository.findById(ownerId)
-                .orElseThrow(() -> new RuntimeException("User not found."));
+                .orElseThrow(() -> new UserNotFoundException("User not found."));
 
         List<HouseRuleDefinition> rules = houseRuleDefinitionRepository.findByOwner(owner);
 
@@ -39,7 +41,7 @@ public class HouseRuleService {
 
     public HouseRuleDefinitionResponse createHouseRule(CreateHouseRuleRequest request){
         User owner = userRepository.findById(request.getOwnerId())
-                .orElseThrow(() -> new RuntimeException("User not found."));
+                .orElseThrow(() -> new UserNotFoundException("User not found."));
 
         HouseRuleDefinition rule = new HouseRuleDefinition(
                 owner,
@@ -53,7 +55,7 @@ public class HouseRuleService {
     public HouseRuleDefinitionResponse updateHouseRule(Long id, UpdateHouseRuleRequest request){
         HouseRuleDefinition rule = houseRuleDefinitionRepository
                 .findByIdAndOwnerId(id, request.getOwnerId())
-                .orElseThrow(() -> new RuntimeException("Rule not found for this user."));
+                .orElseThrow(() -> new RuleNotFoundException("Rule not found for this user."));
         rule.setRuleName(request.getRuleName());
         rule.setDescription(request.getDescription());
 
@@ -63,7 +65,7 @@ public class HouseRuleService {
     public void deleteHouseRule(Long id, Long ownerId) {
         HouseRuleDefinition rule = houseRuleDefinitionRepository
                 .findByIdAndOwnerId(id, ownerId)
-                .orElseThrow(() -> new RuntimeException("House rule not found for this user."));
+                .orElseThrow(() -> new RuleNotFoundException("Rule not found for this user."));
 
         houseRuleDefinitionRepository.delete(rule);
     }
