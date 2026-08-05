@@ -10,6 +10,7 @@ import com.mhosler.d20_campaign_manager.exceptions.*;
 import com.mhosler.d20_campaign_manager.repository.HouseRuleDefinitionRepository;
 import com.mhosler.d20_campaign_manager.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class HouseRuleService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     public List<HouseRuleDefinitionResponse> getRulesByOwner(Long ownerId) {
         User owner = userRepository.findById(ownerId)
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
@@ -39,6 +41,7 @@ public class HouseRuleService {
         return responses;
     }
 
+    @Transactional
     public HouseRuleDefinitionResponse createHouseRule(CreateHouseRuleRequest request){
         User owner = userRepository.findById(request.getOwnerId())
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
@@ -52,6 +55,7 @@ public class HouseRuleService {
         return mapToResponse(houseRuleDefinitionRepository.save(rule));
     }
 
+    @Transactional
     public HouseRuleDefinitionResponse updateHouseRule(Long id, UpdateHouseRuleRequest request){
         HouseRuleDefinition rule = houseRuleDefinitionRepository
                 .findByIdAndOwnerId(id, request.getOwnerId())

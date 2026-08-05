@@ -1,6 +1,8 @@
 package com.mhosler.d20_campaign_manager.controller;
 
 import com.mhosler.d20_campaign_manager.dto.ApiError;
+import com.mhosler.d20_campaign_manager.exceptions.CampaignMembershipNotFoundException;
+import com.mhosler.d20_campaign_manager.exceptions.CampaignNotFoundException;
 import com.mhosler.d20_campaign_manager.exceptions.RuleNotFoundException;
 import com.mhosler.d20_campaign_manager.exceptions.UserNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,6 +37,28 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now()
         );
 
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CampaignNotFoundException.class)
+    public ResponseEntity<ApiError> handleCampaignNotFound(CampaignNotFoundException e, HttpServletRequest request) {
+        ApiError error = new ApiError(
+                HttpStatus.NOT_FOUND,
+                e.getMessage(),
+                request.getRequestURI(),
+                LocalDateTime.now()
+        );
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CampaignMembershipNotFoundException.class)
+    public ResponseEntity<ApiError> handleCampaignMembershipNotFound(CampaignMembershipNotFoundException e, HttpServletRequest request) {
+        ApiError error = new ApiError(
+                HttpStatus.NOT_FOUND,
+                e.getMessage(),
+                request.getRequestURI(),
+                LocalDateTime.now()
+        );
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 }

@@ -11,12 +11,12 @@ public class CampaignMembership {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "campaign_id")
-    private Campaign campaign;
-
-    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "campaign_id")
+    private Campaign campaign;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
@@ -27,7 +27,7 @@ public class CampaignMembership {
     public CampaignMembership() {
     }
 
-    public CampaignMembership(Campaign campaign, User user, Role role, boolean active) {
+    public CampaignMembership(User user, Campaign campaign, Role role, boolean active) {
         this.campaign = campaign;
         this.user = user;
         this.role = role;

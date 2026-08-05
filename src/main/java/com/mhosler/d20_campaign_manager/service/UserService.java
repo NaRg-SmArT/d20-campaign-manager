@@ -8,6 +8,7 @@ import com.mhosler.d20_campaign_manager.entity.User;
 import com.mhosler.d20_campaign_manager.exceptions.*;
 import com.mhosler.d20_campaign_manager.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -18,12 +19,14 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     public UserResponse createUser(CreateUserRequest request) {
         User user = new User(request.getUsername(), request.getEmail());
 
         return mapToResponse(userRepository.save(user));
     }
 
+    @Transactional
     public UserResponse updateUser(Long id, UpdateUserRequest request) {
         User user = userRepository
                 .findById(id)
