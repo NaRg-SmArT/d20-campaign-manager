@@ -5,7 +5,7 @@ import jakarta.validation.constraints.*;
 
 public class UpdateCampaignMembershipRequest {
 
-    @NotNull
+    @NotNull( message = "Role must not be null.")
     private Role role;
 
     private boolean active;

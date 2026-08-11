@@ -4,10 +4,11 @@ import jakarta.validation.constraints.*;
 
 public class UpdateUserRequest {
 
-    @NotBlank
-    @Size(max = 50)
+    @NotBlank(message = "Username cannot be blank.")
+    @Size(max = 50, message = "Username cannot exceed 50 characters.")
     private String username;
-    @NotBlank
+
+    @NotBlank(message = "Email must not be blank.")
     private String email;
 
     public UpdateUserRequest() {

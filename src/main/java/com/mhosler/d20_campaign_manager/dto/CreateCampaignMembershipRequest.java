@@ -5,13 +5,13 @@ import jakarta.validation.constraints.*;
 
 public class CreateCampaignMembershipRequest {
 
-    @NotNull
+    @NotNull(message = "User id must not be null.")
     private Long userId;
 
-    @NotNull
+    @NotNull(message = "Campaign id must not be null.")
     private Long campaignId;
 
-    @NotNull
+    @NotNull(message = "Role must not be null.")
     private Role role;
 
     public CreateCampaignMembershipRequest(Long userId, Long campaignId, Role role) {

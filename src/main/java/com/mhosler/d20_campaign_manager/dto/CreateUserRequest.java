@@ -3,10 +3,11 @@ package com.mhosler.d20_campaign_manager.dto;
 import jakarta.validation.constraints.*;
 
 public class CreateUserRequest {
-    @NotBlank
-    @Size(max = 50)
+    @NotBlank(message = "Username cannot be blank.")
+    @Size(max = 50, message = "Username cannot exceed 50 characters.")
     private String username;
-    @NotBlank
+
+    @NotBlank(message = "Email cannot be blank.")
     private String email;
 
     public CreateUserRequest() {

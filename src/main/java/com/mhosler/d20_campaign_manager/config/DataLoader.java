@@ -1,7 +1,8 @@
 package com.mhosler.d20_campaign_manager.config;
 
-import com.mhosler.d20_campaign_manager.entity.User;
-import com.mhosler.d20_campaign_manager.entity.HouseRuleDefinition;
+import com.mhosler.d20_campaign_manager.entity.*;
+import com.mhosler.d20_campaign_manager.repository.CampaignMembershipRepository;
+import com.mhosler.d20_campaign_manager.repository.CampaignRepository;
 import com.mhosler.d20_campaign_manager.repository.UserRepository;
 import com.mhosler.d20_campaign_manager.repository.HouseRuleDefinitionRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -12,11 +13,15 @@ public class DataLoader implements CommandLineRunner {
 
     private final UserRepository userRepository;
     private final HouseRuleDefinitionRepository houseRuleDefinitionRepository;
+    private final CampaignRepository campaignRepository;
+    private final CampaignMembershipRepository campaignMembershipRepository;
 
     public DataLoader(UserRepository userRepository,
-                      HouseRuleDefinitionRepository houseRuleDefinitionRepository) {
+                      HouseRuleDefinitionRepository houseRuleDefinitionRepository, CampaignRepository campaignRepository, CampaignMembershipRepository campaignMembershipRepository) {
         this.userRepository = userRepository;
         this.houseRuleDefinitionRepository = houseRuleDefinitionRepository;
+        this.campaignRepository = campaignRepository;
+        this.campaignMembershipRepository = campaignMembershipRepository;
     }
 
     @Override
@@ -32,6 +37,13 @@ public class DataLoader implements CommandLineRunner {
 
             houseRuleDefinitionRepository.save(rule1);
             houseRuleDefinitionRepository.save(rule2);
+
+            Campaign campaign1 = new Campaign(user, "test_campaign", "ShadowDark",  "Campaign to test membership endpoint");
+            campaignRepository.save(campaign1);
+
+            CampaignMembership testMembership = new CampaignMembership(user, campaign1, Role.GM, true);
+
+            campaignMembershipRepository.save(testMembership);
         }
     }
 }
