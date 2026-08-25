@@ -79,7 +79,8 @@ public class CampaignMembershipService {
 
     @Transactional
     public CampaignMembershipResponse updateCampaignMembership(Long id, UpdateCampaignMembershipRequest request) {
-        CampaignMembership membership = campaignMembershipRepository.findById(id)
+        CampaignMembership membership = campaignMembershipRepository
+                        .findById(id)
                         .orElseThrow(() -> new CampaignMembershipNotFoundException("Campaign membership not found.")
                         );
 

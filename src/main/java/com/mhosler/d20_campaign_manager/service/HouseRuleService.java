@@ -65,7 +65,7 @@ public class HouseRuleService {
 
         return mapToResponse(houseRuleDefinitionRepository.save(rule));
     }
-
+    
     public void deleteHouseRule(Long id, Long ownerId) {
         HouseRuleDefinition rule = houseRuleDefinitionRepository
                 .findByIdAndOwnerId(id, ownerId)
