@@ -1,12 +1,12 @@
 package com.mhosler.d20_campaign_manager.config;
 
 import com.mhosler.d20_campaign_manager.entity.*;
-import com.mhosler.d20_campaign_manager.repository.CampaignMembershipRepository;
-import com.mhosler.d20_campaign_manager.repository.CampaignRepository;
-import com.mhosler.d20_campaign_manager.repository.UserRepository;
-import com.mhosler.d20_campaign_manager.repository.HouseRuleDefinitionRepository;
+import com.mhosler.d20_campaign_manager.repository.*;
+import com.mhosler.d20_campaign_manager.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -15,13 +15,17 @@ public class DataLoader implements CommandLineRunner {
     private final HouseRuleDefinitionRepository houseRuleDefinitionRepository;
     private final CampaignRepository campaignRepository;
     private final CampaignMembershipRepository campaignMembershipRepository;
+    private final SessionRepository sessionRepository;
+    private final SceneRepository sceneRepository;
 
     public DataLoader(UserRepository userRepository,
-                      HouseRuleDefinitionRepository houseRuleDefinitionRepository, CampaignRepository campaignRepository, CampaignMembershipRepository campaignMembershipRepository) {
+                      HouseRuleDefinitionRepository houseRuleDefinitionRepository, CampaignRepository campaignRepository, CampaignMembershipRepository campaignMembershipRepository,  SessionRepository sessionRepository,  SceneRepository sceneRepository) {
         this.userRepository = userRepository;
         this.houseRuleDefinitionRepository = houseRuleDefinitionRepository;
         this.campaignRepository = campaignRepository;
         this.campaignMembershipRepository = campaignMembershipRepository;
+        this.sessionRepository = sessionRepository;
+        this.sceneRepository = sceneRepository;
     }
 
     @Override
@@ -44,6 +48,26 @@ public class DataLoader implements CommandLineRunner {
             CampaignMembership testMembership = new CampaignMembership(user, campaign1, Role.GM, true);
 
             campaignMembershipRepository.save(testMembership);
+
+            Session session = new Session(
+                    campaign1,
+                    1,
+                    LocalDateTime.of(2026, 9, 8, 18, 0),
+                    "The party reconvenes at the Rusty Flagon after last week's ambush. Wounds are fresh and tempers are short.",
+                    "Rusty Flagon Tavern, Dawnhaven",
+                    null
+            );
+            sessionRepository.save(session);
+
+            Scene scene = new Scene(
+                    session,
+                    "The hooded figure from last session was spotted near the dockmaster's office. A street kid claims he saw them enter but never leave.",
+                    "Dockmaster Errol Vance — nervous, sweating, won't make eye contact. The street kid, Pip — sharp, wants coin before he talks.",
+                    "Dockmaster's office, the alley behind it, Pier 7 where an unmarked crate sits.",
+                    "Crate contains smuggled spell components worth 200gp. Vance will bribe the party to stay quiet.",
+                    "If ignored, the crate ships out at dawn. Vance relaxes. The hooded figure completes whatever they came for."
+            );
+            sceneRepository.save(scene);
         }
     }
 }
