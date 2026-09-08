@@ -2,7 +2,6 @@ package com.mhosler.d20_campaign_manager.config;
 
 import com.mhosler.d20_campaign_manager.entity.*;
 import com.mhosler.d20_campaign_manager.repository.*;
-import com.mhosler.d20_campaign_manager.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
