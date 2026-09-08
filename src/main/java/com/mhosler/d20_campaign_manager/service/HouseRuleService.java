@@ -27,7 +27,7 @@ public class HouseRuleService {
     }
 
     @Transactional
-    public List<HouseRuleDefinitionResponse> getRulesByOwner(long ownerId) {
+    public List<HouseRuleDefinitionResponse> getRulesByOwner(Long ownerId) {
         User owner = userRepository.findById(ownerId)
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
 
@@ -56,7 +56,7 @@ public class HouseRuleService {
     }
 
     @Transactional
-    public HouseRuleDefinitionResponse updateHouseRule(long id, UpdateHouseRuleRequest request){
+    public HouseRuleDefinitionResponse updateHouseRule(Long id, UpdateHouseRuleRequest request){
         HouseRuleDefinition rule = houseRuleDefinitionRepository
                 .findByIdAndOwnerId(id, request.getOwnerId())
                 .orElseThrow(() -> new RuleNotFoundException("Rule not found for this user."));
@@ -66,7 +66,7 @@ public class HouseRuleService {
         return mapToResponse(houseRuleDefinitionRepository.save(rule));
     }
     
-    public void deleteHouseRule(long id, long ownerId) {
+    public void deleteHouseRule(Long id, Long ownerId) {
         HouseRuleDefinition rule = houseRuleDefinitionRepository
                 .findByIdAndOwnerId(id, ownerId)
                 .orElseThrow(() -> new RuleNotFoundException("Rule not found for this user."));
@@ -75,7 +75,7 @@ public class HouseRuleService {
     }
 
     private HouseRuleDefinitionResponse mapToResponse(HouseRuleDefinition rule) {
-        long ruleId = rule.getId();
+        Long ruleId = rule.getId();
         String ruleName = rule.getRuleName();
         String description = rule.getDescription();
 

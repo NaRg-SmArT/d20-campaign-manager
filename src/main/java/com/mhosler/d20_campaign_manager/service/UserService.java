@@ -27,7 +27,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse updateUser(long id, UpdateUserRequest request) {
+    public UserResponse updateUser(Long id, UpdateUserRequest request) {
         User user = userRepository
                 .findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
@@ -38,14 +38,14 @@ public class UserService {
         return mapToResponse(userRepository.save(user));
     }
 
-    public void  deleteUser(long id) {
+    public void  deleteUser(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
         userRepository.delete(user);
     }
 
     private UserResponse mapToResponse(User user) {
-        long id = user.getId();
+        Long id = user.getId();
         String username = user.getUsername();
         String email = user.getEmail();
 

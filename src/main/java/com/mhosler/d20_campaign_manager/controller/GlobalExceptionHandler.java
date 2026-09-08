@@ -2,10 +2,7 @@ package com.mhosler.d20_campaign_manager.controller;
 
 import com.mhosler.d20_campaign_manager.dto.ApiError;
 import com.mhosler.d20_campaign_manager.dto.InputValidationError;
-import com.mhosler.d20_campaign_manager.exceptions.CampaignMembershipNotFoundException;
-import com.mhosler.d20_campaign_manager.exceptions.CampaignNotFoundException;
-import com.mhosler.d20_campaign_manager.exceptions.RuleNotFoundException;
-import com.mhosler.d20_campaign_manager.exceptions.UserNotFoundException;
+import com.mhosler.d20_campaign_manager.exceptions.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -82,5 +79,27 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now()
         );
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(SessionNotFoundException.class)
+    public ResponseEntity<ApiError> handleSessionNotFound(SessionNotFoundException e, HttpServletRequest request) {
+        ApiError error = new ApiError(
+                HttpStatus.NOT_FOUND,
+                e.getMessage(),
+                request.getRequestURI(),
+                LocalDateTime.now()
+        );
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(SceneNotFoundException.class)
+    public ResponseEntity<ApiError> handleSceneNotFound(SceneNotFoundException e, HttpServletRequest request) {
+        ApiError error = new ApiError(
+                HttpStatus.NOT_FOUND,
+                e.getMessage(),
+                request.getRequestURI(),
+                LocalDateTime.now()
+        );
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 }

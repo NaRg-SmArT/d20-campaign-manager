@@ -24,7 +24,7 @@ public class SessionService {
     }
 
     @Transactional
-    public List<SessionResponse> getSessionsByCampaignId(long campaignId) {
+    public List<SessionResponse> getSessionsByCampaignId(Long campaignId) {
         Campaign campaign = campaignRepository.findById(campaignId)
                 .orElseThrow(() -> new CampaignNotFoundException("Campaign not found: " + campaignId));
         return sessionRepository.findByCampaign(campaign).stream()
@@ -48,7 +48,7 @@ public class SessionService {
     }
 
     @Transactional
-    public SessionResponse updateSession(long id, UpdateSessionRequest request) {
+    public SessionResponse updateSession(Long id, UpdateSessionRequest request) {
         Campaign campaign = campaignRepository.findById(request.getCampaignId())
                 .orElseThrow(() -> new CampaignNotFoundException("Campaign not found: " + request.getCampaignId()));
         Session session = sessionRepository.findByIdAndCampaign(id, campaign)
@@ -61,7 +61,7 @@ public class SessionService {
         return mapToResponse(sessionRepository.save(session));
     }
 
-    public void deleteSession(long id) {
+    public void deleteSession(Long id) {
         Session session = sessionRepository.findById(id)
                 .orElseThrow(() -> new SessionNotFoundException("Session not found: " + id));
         sessionRepository.delete(session);

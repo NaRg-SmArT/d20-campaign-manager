@@ -24,7 +24,7 @@ public class SceneService {
     }
 
     @Transactional
-    public List<SceneResponse> getScenesBySessionId(long sessionId) {
+    public List<SceneResponse> getScenesBySessionId(Long sessionId) {
         Session session = sessionRepository.findById(sessionId)
                 .orElseThrow(() -> new SessionNotFoundException("Session not found: " + sessionId));
         return sceneRepository.findBySession(session).stream()
@@ -48,7 +48,7 @@ public class SceneService {
     }
 
     @Transactional
-    public SceneResponse updateScene(long id, UpdateSceneRequest request) {
+    public SceneResponse updateScene(Long id, UpdateSceneRequest request) {
         Session session = sessionRepository.findById(request.getSessionId())
                 .orElseThrow(() -> new SessionNotFoundException("Session not found: " + request.getSessionId()));
         Scene scene = sceneRepository.findByIdAndSession(id, session)
@@ -61,7 +61,7 @@ public class SceneService {
         return mapToResponse(sceneRepository.save(scene));
     }
 
-    public void deleteScene(long id) {
+    public void deleteScene(Long id) {
         Scene scene = sceneRepository.findById(id)
                 .orElseThrow(() -> new SceneNotFoundException("Scene not found: " + id));
         sceneRepository.delete(scene);
