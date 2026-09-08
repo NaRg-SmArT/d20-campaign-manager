@@ -8,13 +8,13 @@ public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;
 
-    private int sessionNumber;
+    private Integer sessionNumber;
     private LocalDateTime dateTime;
     private String opening;
     private String startingLocation;
@@ -22,7 +22,7 @@ public class Session {
 
     public Session() {}
 
-    public Session(Campaign campaign, int sessionNumber, LocalDateTime dateTime, String opening, String startingLocation, String closingNotes) {
+    public Session(Campaign campaign, Integer sessionNumber, LocalDateTime dateTime, String opening, String startingLocation, String closingNotes) {
         this.campaign = campaign;
         this.sessionNumber = sessionNumber;
         this.dateTime = dateTime;
@@ -31,8 +31,8 @@ public class Session {
         this.closingNotes = closingNotes;
     }
 
-    public long getId() { return id; }
-    public void setId(long id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public Campaign getCampaign() { return campaign; }
     public void setCampaign(Campaign campaign) { this.campaign = campaign; }

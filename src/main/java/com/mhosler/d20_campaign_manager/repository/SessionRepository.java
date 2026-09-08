@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface SessionRepository extends JpaRepository<Session, Long> {
     List<Session> findByCampaign(Campaign campaign);
-    Optional<Session> findByIdAndCampaign(Session session, Campaign campaign);
+    Optional<Session> findByIdAndCampaign(Long id, Campaign campaign);;
 }

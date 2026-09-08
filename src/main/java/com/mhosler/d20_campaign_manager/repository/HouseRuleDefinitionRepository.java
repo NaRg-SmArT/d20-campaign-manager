@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface HouseRuleDefinitionRepository extends JpaRepository<HouseRuleDefinition,Integer> {
+public interface HouseRuleDefinitionRepository extends JpaRepository<HouseRuleDefinition,Long> {
     List<HouseRuleDefinition> findByOwner(User owner);
 
     Optional<HouseRuleDefinition> findByIdAndOwnerId(long id, long ownerId);
