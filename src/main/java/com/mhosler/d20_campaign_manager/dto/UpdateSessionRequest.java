@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class UpdateSessionRequest {
 
     @NotNull(message = "Campaign ID is required")
-    private Long campaignId;
+    private long campaignId;
 
     @NotNull(message = "Session number is required")
     private int sessionNumber;
@@ -27,11 +27,11 @@ public class UpdateSessionRequest {
     @Size(max = 2000, message = "Closing notes must not exceed 2000 characters")
     private String closingNotes;
 
-    public Long getCampaignId() {
+    public long getCampaignId() {
         return campaignId;
     }
 
-    public void setCampaignId(Long campaignId) {
+    public void setCampaignId(long campaignId) {
         this.campaignId = campaignId;
     }
 

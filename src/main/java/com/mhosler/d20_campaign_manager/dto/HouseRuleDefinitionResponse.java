@@ -2,7 +2,7 @@ package com.mhosler.d20_campaign_manager.dto;
 
 public class HouseRuleDefinitionResponse {
 
-    private Long id;
+    private long id;
     private String ruleName;
     private String description;
 
@@ -10,16 +10,16 @@ public class HouseRuleDefinitionResponse {
 
     }
 
-    public HouseRuleDefinitionResponse(Long id, String ruleName, String description) {
+    public HouseRuleDefinitionResponse(long id, String ruleName, String description) {
         this.id = id;
         this.ruleName = ruleName;
         this.description = description;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

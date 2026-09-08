@@ -24,17 +24,17 @@ public class CampaignController {
     }
 
     @GetMapping
-    public List<CampaignResponse> getCampaignsByOwnerId(@RequestParam Long ownerId) {
+    public List<CampaignResponse> getCampaignsByOwnerId(@RequestParam long ownerId) {
         return campaignService.getCampaignsByOwnerId(ownerId);
     }
 
     @PutMapping("/{id}")
-    public CampaignResponse updateCampaign(@PathVariable Long id, @Valid @RequestBody UpdateCampaignRequest request) {
+    public CampaignResponse updateCampaign(@PathVariable long id, @Valid @RequestBody UpdateCampaignRequest request) {
         return campaignService.updateCampaign(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCampaign(@PathVariable Long id) {
+    public void deleteCampaign(@PathVariable long id) {
         campaignService.deleteCampaign(id);
     }
 }

@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 
 public class CreateCampaignRequest {
     @NotNull(message = "Owner Id must not be null.")
-    private Long ownerId;
+    private long ownerId;
 
     @NotBlank(message = "Name must not be blank.")
     @Size(max = 50, message = "Name must not exceed 50 characters.")
@@ -18,7 +18,7 @@ public class CreateCampaignRequest {
     @Size(max = 500, message = "description must not exceed 500 characters.")
     private String description;
 
-    public CreateCampaignRequest(Long ownerId, String name, String system, String description) {
+    public CreateCampaignRequest(long ownerId, String name, String system, String description) {
         this.ownerId = ownerId;
         this.name = name;
         this.system = system;
@@ -28,10 +28,10 @@ public class CreateCampaignRequest {
 
     }
 
-    public Long getOwnerId() {
+    public long getOwnerId() {
         return ownerId;
     }
-    public void setOwnerId(Long ownerId) {
+    public void setOwnerId(long ownerId) {
         this.ownerId = ownerId;
     }
 

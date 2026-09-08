@@ -1,6 +1,6 @@
 package com.mhosler.d20_campaign_manager.service;
 
-import com.mhosler.d20_campaign_manager.controller.dto.*;
+import com.mhosler.d20_campaign_manager.dto.*;
 import com.mhosler.d20_campaign_manager.entity.Campaign;
 import com.mhosler.d20_campaign_manager.entity.Session;
 import com.mhosler.d20_campaign_manager.exceptions.CampaignNotFoundException;
@@ -24,7 +24,7 @@ public class SessionService {
     }
 
     @Transactional
-    public List<SessionResponse> getSessionsByCampaignId(Long campaignId) {
+    public List<SessionResponse> getSessionsByCampaignId(long campaignId) {
         Campaign campaign = campaignRepository.findById(campaignId)
                 .orElseThrow(() -> new CampaignNotFoundException("Campaign not found: " + campaignId));
         return sessionRepository.findByCampaign(campaign).stream()
@@ -48,7 +48,7 @@ public class SessionService {
     }
 
     @Transactional
-    public SessionResponse updateSession(Long id, UpdateSessionRequest request) {
+    public SessionResponse updateSession(long id, UpdateSessionRequest request) {
         Campaign campaign = campaignRepository.findById(request.getCampaignId())
                 .orElseThrow(() -> new CampaignNotFoundException("Campaign not found: " + request.getCampaignId()));
         Session session = sessionRepository.findByIdAndCampaign(id, campaign)
@@ -61,7 +61,7 @@ public class SessionService {
         return mapToResponse(sessionRepository.save(session));
     }
 
-    public void deleteSession(Long id) {
+    public void deleteSession(long id) {
         Session session = sessionRepository.findById(id)
                 .orElseThrow(() -> new SessionNotFoundException("Session not found: " + id));
         sessionRepository.delete(session);

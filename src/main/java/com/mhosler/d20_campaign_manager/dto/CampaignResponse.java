@@ -1,13 +1,13 @@
 package com.mhosler.d20_campaign_manager.dto;
 
 public class CampaignResponse {
-    private Long id;
-    private Long ownerId;
+    private long id;
+    private long ownerId;
     private String name;
     private String system;
     private String description;
 
-    public CampaignResponse(Long id, Long ownerId, String name, String system, String description) {
+    public CampaignResponse(long id, long ownerId, String name, String system, String description) {
         this.id = id;
         this.ownerId = ownerId;
         this.name = name;
@@ -18,17 +18,17 @@ public class CampaignResponse {
 
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Long getOwnerId() {
+    public long getOwnerId() {
         return ownerId;
     }
-    public void setOwnerId(Long ownerId) {
+    public void setOwnerId(long ownerId) {
         this.ownerId = ownerId;
     }
 

@@ -8,7 +8,7 @@ public class CampaignMembership {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -34,10 +34,10 @@ public class CampaignMembership {
         this.active = active;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

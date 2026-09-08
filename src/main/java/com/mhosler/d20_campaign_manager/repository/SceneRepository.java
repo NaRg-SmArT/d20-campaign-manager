@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface SceneRepository extends JpaRepository<Scene, Long> {
     List<Scene> findBySession(Session session);
-    Optional<Scene> findByIdAndSession(Long id, Session session);
+    Optional<Scene> findByIdAndSession(long id, Session session);
 }

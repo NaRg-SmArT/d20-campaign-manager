@@ -20,7 +20,7 @@ public class HouseRulesController {
     }
 
     @GetMapping
-    List<HouseRuleDefinitionResponse> getHouseRules(@RequestParam Long ownerId){
+    List<HouseRuleDefinitionResponse> getHouseRules(@RequestParam long ownerId){
         return houseRuleService.getRulesByOwner(ownerId);
     }
 
@@ -30,12 +30,12 @@ public class HouseRulesController {
     }
 
     @PutMapping("/{id}")
-    public HouseRuleDefinitionResponse updateHouseRule(@PathVariable Long id, @Valid @RequestBody UpdateHouseRuleRequest request){
+    public HouseRuleDefinitionResponse updateHouseRule(@PathVariable long id, @Valid @RequestBody UpdateHouseRuleRequest request){
         return houseRuleService.updateHouseRule(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteHouseRule(@PathVariable Long id, @RequestParam Long ownerId){
+    public void deleteHouseRule(@PathVariable long id, @RequestParam long ownerId){
         houseRuleService.deleteHouseRule(id, ownerId);
     }
 }

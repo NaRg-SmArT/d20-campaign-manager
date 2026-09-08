@@ -3,7 +3,7 @@ package com.mhosler.d20_campaign_manager.dto;
 
 public class UserResponse {
 
-    private Long id;
+    private long id;
     private String username;
     private String email;
 
@@ -11,16 +11,16 @@ public class UserResponse {
 
     }
 
-    public UserResponse(Long id, String username, String email) {
+    public UserResponse(long id, String username, String email) {
         this.id = id;
         this.username = username;
         this.email = email;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

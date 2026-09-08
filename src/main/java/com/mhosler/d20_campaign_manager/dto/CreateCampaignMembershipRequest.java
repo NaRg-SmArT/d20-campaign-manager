@@ -6,15 +6,15 @@ import jakarta.validation.constraints.*;
 public class CreateCampaignMembershipRequest {
 
     @NotNull(message = "User id must not be null.")
-    private Long userId;
+    private long userId;
 
     @NotNull(message = "Campaign id must not be null.")
-    private Long campaignId;
+    private long campaignId;
 
     @NotNull(message = "Role must not be null.")
     private Role role;
 
-    public CreateCampaignMembershipRequest(Long userId, Long campaignId, Role role) {
+    public CreateCampaignMembershipRequest(long userId, long campaignId, Role role) {
         this.userId = userId;
         this.campaignId = campaignId;
         this.role = role;
@@ -24,17 +24,17 @@ public class CreateCampaignMembershipRequest {
     }
 
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
-    public void setUserId(Long userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public Long getCampaignId() {
+    public long getCampaignId() {
         return campaignId;
     }
-    public void setCampaignId(Long campaignId) {
+    public void setCampaignId(long campaignId) {
         this.campaignId = campaignId;
     }
 

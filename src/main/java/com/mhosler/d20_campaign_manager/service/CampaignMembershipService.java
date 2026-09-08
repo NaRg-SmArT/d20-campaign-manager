@@ -48,7 +48,7 @@ public class CampaignMembershipService {
     }
 
     @Transactional
-    public List<CampaignMembershipResponse> getCampaignMembershipsByCampaignId(Long campaignId) {
+    public List<CampaignMembershipResponse> getCampaignMembershipsByCampaignId(long campaignId) {
         Campaign campaign = campaignRepository
                 .findById(campaignId)
                 .orElseThrow(() -> new CampaignNotFoundException("Campaign not found.")
@@ -63,7 +63,7 @@ public class CampaignMembershipService {
     }
 
     @Transactional
-    public List<CampaignMembershipResponse> getCampaignMembershipsByUserId(Long userId) {
+    public List<CampaignMembershipResponse> getCampaignMembershipsByUserId(long userId) {
         User user = userRepository
                 .findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found.")
@@ -78,7 +78,7 @@ public class CampaignMembershipService {
     }
 
     @Transactional
-    public CampaignMembershipResponse updateCampaignMembership(Long id, UpdateCampaignMembershipRequest request) {
+    public CampaignMembershipResponse updateCampaignMembership(long id, UpdateCampaignMembershipRequest request) {
         CampaignMembership membership = campaignMembershipRepository
                         .findById(id)
                         .orElseThrow(() -> new CampaignMembershipNotFoundException("Campaign membership not found.")
@@ -90,7 +90,7 @@ public class CampaignMembershipService {
         return mapToResponse(campaignMembershipRepository.save(membership));
     }
 
-    public void deleteCampaignMembership(Long id) {
+    public void deleteCampaignMembership(long id) {
         CampaignMembership membership = campaignMembershipRepository
                 .findById(id)
                 .orElseThrow(() -> new CampaignMembershipNotFoundException("Campaign membership not found.")
@@ -100,9 +100,9 @@ public class CampaignMembershipService {
     }
 
     private CampaignMembershipResponse mapToResponse(CampaignMembership membership) {
-        Long id = membership.getId();
-        Long campaignId = membership.getCampaign().getId();
-        Long userId = membership.getUser().getId();
+        long id = membership.getId();
+        long campaignId = membership.getCampaign().getId();
+        long userId = membership.getUser().getId();
         Role role = membership.getRole();
         boolean active = membership.isActive();
 

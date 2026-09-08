@@ -4,15 +4,15 @@ import java.time.LocalDateTime;
 
 public class SessionResponse {
 
-    private Long id;
-    private Long campaignId;
+    private long id;
+    private long campaignId;
     private int sessionNumber;
     private LocalDateTime dateTime;
     private String opening;
     private String startingLocation;
     private String closingNotes;
 
-    public SessionResponse(Long id, Long campaignId, int sessionNumber, LocalDateTime dateTime, String opening, String startingLocation, String closingNotes) {
+    public SessionResponse(long id, long campaignId, int sessionNumber, LocalDateTime dateTime, String opening, String startingLocation, String closingNotes) {
         this.id = id;
         this.campaignId = campaignId;
         this.sessionNumber = sessionNumber;
@@ -22,11 +22,11 @@ public class SessionResponse {
         this.closingNotes = closingNotes;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
-    public Long getCampaignId() { return campaignId; }
-    public void setCampaignId(Long campaignId) { this.campaignId = campaignId; }
+    public long getCampaignId() { return campaignId; }
+    public void setCampaignId(long campaignId) { this.campaignId = campaignId; }
 
     public int getSessionNumber() { return sessionNumber; }
     public void setSessionNumber(int sessionNumber) { this.sessionNumber = sessionNumber; }

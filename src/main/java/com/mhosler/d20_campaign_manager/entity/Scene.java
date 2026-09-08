@@ -7,7 +7,7 @@ public class Scene {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "session_id")
@@ -30,8 +30,8 @@ public class Scene {
         this.passiveOutcome = passiveOutcome;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
     public Session getSession() { return session; }
     public void setSession(Session session) { this.session = session; }

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class HouseRuleDefinition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn (name = "owner_id")
@@ -23,10 +23,10 @@ public class HouseRuleDefinition {
         this.description = description;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

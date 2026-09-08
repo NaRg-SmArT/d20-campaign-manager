@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 public class UpdateSceneRequest {
 
     @NotNull(message = "Session ID is required")
-    private Long sessionId;
+    private long sessionId;
 
     @NotBlank(message = "Hooks are required")
     @Size(max = 2000, message = "Hooks must not exceed 2000 characters")
@@ -25,8 +25,8 @@ public class UpdateSceneRequest {
     @Size(max = 2000, message = "Passive outcome must not exceed 2000 characters")
     private String passiveOutcome;
 
-    public Long getSessionId() { return sessionId; }
-    public void setSessionId(Long sessionId) { this.sessionId = sessionId; }
+    public long getSessionId() { return sessionId; }
+    public void setSessionId(long sessionId) { this.sessionId = sessionId; }
 
     public String getHooks() { return hooks; }
     public void setHooks(String hooks) { this.hooks = hooks; }

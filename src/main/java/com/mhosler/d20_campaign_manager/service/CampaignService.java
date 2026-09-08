@@ -37,7 +37,7 @@ public class CampaignService {
     }
 
     @Transactional
-    public List<CampaignResponse> getCampaignsByOwnerId(Long ownerId) {
+    public List<CampaignResponse> getCampaignsByOwnerId(long ownerId) {
         User owner = userRepository
                 .findById(ownerId)
                 .orElseThrow(() -> new UserNotFoundException("User not found.")
@@ -53,7 +53,7 @@ public class CampaignService {
     }
 
     @Transactional
-    public CampaignResponse updateCampaign(Long id, UpdateCampaignRequest request) {
+    public CampaignResponse updateCampaign(long id, UpdateCampaignRequest request) {
         Campaign campaign = campaignRepository
                 .findById(id)
                 .orElseThrow(() -> new CampaignNotFoundException("Campaign not found.")
@@ -66,7 +66,7 @@ public class CampaignService {
         return mapToResponse(campaignRepository.save(campaign));
     }
 
-    public void deleteCampaign(Long id) {
+    public void deleteCampaign(long id) {
         Campaign campaign = campaignRepository
                 .findById(id)
                 .orElseThrow(() -> new CampaignNotFoundException("Campaign not found.")
@@ -76,8 +76,8 @@ public class CampaignService {
     }
 
     private CampaignResponse mapToResponse(Campaign campaign) {
-        Long id = campaign.getId();
-        Long ownerId = campaign.getOwner().getId();
+        long id = campaign.getId();
+        long ownerId = campaign.getOwner().getId();
         String name = campaign.getName();
         String system = campaign.getSystem();
         String description = campaign.getDescription();

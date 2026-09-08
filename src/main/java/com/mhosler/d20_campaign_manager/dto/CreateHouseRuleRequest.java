@@ -5,7 +5,7 @@ import jakarta.validation.constraints.*;
 
 public class CreateHouseRuleRequest {
     @NotNull(message = "Owner id must not be null.")
-    private Long ownerId;
+    private long ownerId;
 
     @NotBlank(message = "Rule name cannot be blank.")
     @Size(max = 255, message ="Rule name cannot exceed 255 characters." )
@@ -15,7 +15,7 @@ public class CreateHouseRuleRequest {
     @Size(max = 1000, message = "description cannot exceed 1000 characters.")
     private String description;
 
-    public CreateHouseRuleRequest(Long ownerId, String ruleName, String description) {
+    public CreateHouseRuleRequest(long ownerId, String ruleName, String description) {
         this.ownerId = ownerId;
         this.ruleName = ruleName;
         this.description = description;
@@ -25,10 +25,10 @@ public class CreateHouseRuleRequest {
 
     }
 
-    public Long getOwnerId() {
+    public long getOwnerId() {
         return ownerId;
     }
-    public void setOwnerId(Long ownerId) {
+    public void setOwnerId(long ownerId) {
         this.ownerId = ownerId;
     }
 

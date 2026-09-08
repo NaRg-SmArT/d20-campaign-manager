@@ -23,12 +23,12 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public UserResponse updateUser(@PathVariable Long id, @Valid @RequestBody UpdateUserRequest request) {
+    public UserResponse updateUser(@PathVariable long id, @Valid @RequestBody UpdateUserRequest request) {
         return userService.updateUser(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable long id) {
         userService.deleteUser(id);
     }
 }

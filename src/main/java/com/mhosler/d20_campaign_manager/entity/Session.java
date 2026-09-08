@@ -8,7 +8,7 @@ public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "campaign_id")
@@ -31,8 +31,8 @@ public class Session {
         this.closingNotes = closingNotes;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
     public Campaign getCampaign() { return campaign; }
     public void setCampaign(Campaign campaign) { this.campaign = campaign; }

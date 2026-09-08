@@ -26,21 +26,21 @@ public class CampaignMembershipController {
     }
 
     @GetMapping("/campaign/{campaignId}")
-    public List<CampaignMembershipResponse> getMembershipsByCampaign(@PathVariable Long campaignId){
+    public List<CampaignMembershipResponse> getMembershipsByCampaign(@PathVariable long campaignId){
         return campaignMembershipService.getCampaignMembershipsByCampaignId(campaignId);
     }
     @GetMapping("/user/{userId}")
-    public List<CampaignMembershipResponse> getMembershipsByUserId(@PathVariable Long userId){
+    public List<CampaignMembershipResponse> getMembershipsByUserId(@PathVariable long userId){
         return campaignMembershipService.getCampaignMembershipsByUserId(userId);
     }
 
     @PutMapping("/{id}")
-    public CampaignMembershipResponse updateCampaignMembership(@PathVariable Long id, @Valid @RequestBody UpdateCampaignMembershipRequest request){
+    public CampaignMembershipResponse updateCampaignMembership(@PathVariable long id, @Valid @RequestBody UpdateCampaignMembershipRequest request){
         return campaignMembershipService.updateCampaignMembership(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCampaignMembership(@PathVariable Long id){
+    public void deleteCampaignMembership(@PathVariable long id){
         campaignMembershipService.deleteCampaignMembership(id);
     }
 }
