@@ -9,6 +9,7 @@ public class Campaign {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "owner_id")
     private User owner;
 
     private String name;
