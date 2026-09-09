@@ -1,6 +1,9 @@
 package com.mhosler.d20_campaign_manager.dto;
 
+import com.mhosler.d20_campaign_manager.security.ValidPassword;
 import jakarta.validation.constraints.*;
+
+
 
 public class CreateUserRequest {
     @NotBlank(message = "Username cannot be blank.")
@@ -10,13 +13,18 @@ public class CreateUserRequest {
     @NotBlank(message = "Email cannot be blank.")
     private String email;
 
+    @NotBlank
+    @ValidPassword
+    private String password;
+
     public CreateUserRequest() {
 
     }
 
-    public CreateUserRequest(String username, String email) {
+    public CreateUserRequest(String username, String email, String password) {
         this.username = username;
         this.email = email;
+        this.password = password;
     }
 
     public String getUsername() {

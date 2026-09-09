@@ -1,5 +1,6 @@
 package com.mhosler.d20_campaign_manager.dto;
 
+import com.mhosler.d20_campaign_manager.security.ValidPassword;
 import jakarta.validation.constraints.*;
 
 public class UpdateUserRequest {
