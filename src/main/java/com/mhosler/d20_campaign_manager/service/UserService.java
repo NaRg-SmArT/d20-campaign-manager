@@ -21,7 +21,7 @@ public class UserService {
 
     @Transactional
     public UserResponse createUser(CreateUserRequest request) {
-        User user = new User(request.getUsername(), request.getEmail());
+        User user = new User(request.getUsername(), request.getEmail(), request.getPassword());
 
         return mapToResponse(userRepository.save(user));
     }

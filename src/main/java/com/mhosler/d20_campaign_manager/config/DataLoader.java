@@ -30,7 +30,7 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (userRepository.count() == 0) {
-            User user = new User("test_dm", "test@example.com");
+            User user = new User("test_dm", "test@example.com", "D0n'tSt@ndS0Clo$eToMe");
             userRepository.save(user);
 
             HouseRuleDefinition rule1 =
